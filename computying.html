@@ -1,0 +1,78 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop-In Scroll Effect</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-size: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            border: 10px solid #4CAF50; /* Green border */
+            background-color: white; /* Changed background to white */
+            box-shadow: 0 0 0 10px white; /* Adds white background behind the border */
+            box-sizing: border-box; /* Ensures border and padding are included in the size */
+        }
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+       <u> Nvidia And Their Legacy</u>
+        <img src="your-image-url-here" alt="Description of Nvidia image">
+    </div>
+
+    
+    
+    <div class="slide">
+        <u>How it started</u>
+        <img src="your-image" alt="Description">
+        <p style="font-size: 18px;">
+            Nvidia was founded in 1993 by Jensen Huang, Chris Malachowsky, and Curtis Priem, with a vision to revolutionize computing through graphics. Their first breakthrough came in 1995 with the NV1, which integrated 2D and 3D graphics, though it wasn't a commercial success. In 1999, they launched the GeForce 256, heralded as the world's first GPU, laying the foundation for Nvidia's dominance in gaming and multimedia. Over time, Nvidia expanded into AI, autonomous vehicles, and high-performance computing. Today, it influences diverse industries like healthcare and research, showcasing the founders' determination and the adaptability of its technologies. Its legacy is innovation.
+        </p>
+    </div>
+
+    <div class="slide">Slide 3: Another Topic</div>
+
+    <div class="slide">Thank You!</div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+
+        const handleScroll = () => {
+            slides.forEach(slide => {
+                const rect = slide.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+        };
+
+        // Attach scroll listener
+        window.addEventListener('scroll', handleScroll);
+
+        // Trigger on page load
+        handleScroll();
+    </script>
+</body>
+</html>
